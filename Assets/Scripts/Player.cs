@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI healthDisplay;
 
+    public GameObject effect;
+
     private void Update() 
     {
         healthDisplay.text = health.ToString();
@@ -31,11 +33,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) && transform.position.y < maxHeight) 
         {
+            Instantiate(effect, transform.position, Quaternion.identity);
             //moving the player up
             targetPos = new Vector2(transform.position.x, transform.position.y + Yincrement);
         }
         else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > minHeight) 
         {
+            Instantiate(effect, transform.position, Quaternion.identity);
             //moving the player down
             targetPos = new Vector2(transform.position.x, transform.position.y - Yincrement);
         }

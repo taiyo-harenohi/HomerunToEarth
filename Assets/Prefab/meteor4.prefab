@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
+  effect: {fileID: 7559262234881822752, guid: 910e670e52e90644cb1c4120406d7455, type: 3}
 --- !u!61 &171108076308672435
 BoxCollider2D:
   m_ObjectHideFlags: 0
