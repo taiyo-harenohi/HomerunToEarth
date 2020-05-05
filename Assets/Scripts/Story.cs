@@ -20,7 +20,9 @@ public class Story : MonoBehaviour
 
     private float startTime = 0f;
     private float timer = 0f;
-    private float holdTime = 3.0f;
+    private float holdTime = 1.0f;
+
+    public GameObject pressSpace;
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class Story : MonoBehaviour
                 }
                 else
                 {
+                    pressSpace.SetActive(false);
                     NextSentence();
                 }
                 index++;
@@ -85,5 +88,6 @@ public class Story : MonoBehaviour
             txtDialog.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        pressSpace.SetActive(true);
     }
 }

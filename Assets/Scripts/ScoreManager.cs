@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
 
     public GameObject popUp;
 
-    public string sceneName;
+    public string nextSceneName;
     public string sceneCurrent;
 
     void Update()
@@ -28,25 +28,25 @@ public class ScoreManager : MonoBehaviour
                 }
                 break;
             case "level2":
-                if (score >= 5) // 100
+                if (score >= 100)
                 {
                     PopUp();
                 }
                 break;
             case "level3":
-                if (score >= 5) // 200
+                if (score >= 200) 
                 {
                     PopUp();
                 }
                 break;
             case "level4":
-                if (score >= 5) // 300
+                if (score >= 300)
                 {
                     PopUp();
                 }
                 break;
             case "level5":
-                if (score >= 5) // 500
+                if (score >= 500)
                 {
                     PopUp();
                 }
@@ -73,6 +73,6 @@ public class ScoreManager : MonoBehaviour
     public void NextScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(nextSceneName);
     }
 }

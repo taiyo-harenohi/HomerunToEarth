@@ -31,13 +31,13 @@ public class Player : MonoBehaviour
         //updating the position by using Vector2 and its method MoveTowards
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.W) && transform.position.y < maxHeight) 
+        if (Input.GetKeyDown(KeyCode.W) && transform.position.y < maxHeight || Input.GetKeyDown(KeyCode.UpArrow) && transform.position.y < maxHeight) 
         {
             Instantiate(effect, transform.position, Quaternion.identity);
             //moving the player up
             targetPos = new Vector2(transform.position.x, transform.position.y + Yincrement);
         }
-        else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > minHeight) 
+        else if (Input.GetKeyDown(KeyCode.S) && transform.position.y > minHeight || Input.GetKeyDown(KeyCode.DownArrow) && transform.position.y > minHeight) 
         {
             Instantiate(effect, transform.position, Quaternion.identity);
             //moving the player down
