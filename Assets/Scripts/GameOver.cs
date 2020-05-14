@@ -7,13 +7,25 @@ public class GameOver : MonoBehaviour
 {
     public string sceneName;
 
+    public AudioClip button;
+
+    static AudioSource audioSrc;
+
+    private void Start()
+    {
+        audioSrc = GetComponent<AudioSource>();
+    }
+
     public void Retry()
     {
-        SceneManager.LoadScene(sceneName); // will depend on the last chapter => not implemented... yet
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
+        audioSrc.PlayOneShot(button);
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 }

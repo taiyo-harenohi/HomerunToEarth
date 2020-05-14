@@ -8,6 +8,15 @@ public class Pause : MonoBehaviour
     public GameObject pauseBox;
     private int counter;
 
+    public AudioClip button;
+
+    static AudioSource audioSrc;
+
+    private void Start()
+    {
+        audioSrc = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && counter == 0)
@@ -26,6 +35,7 @@ public class Pause : MonoBehaviour
 
     public void MainMenu()
     {
+        audioSrc.PlayOneShot(button);
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }

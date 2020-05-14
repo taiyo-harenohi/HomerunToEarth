@@ -24,6 +24,9 @@ public class Story : MonoBehaviour
 
     public GameObject pressSpace;
 
+    public Animator sceneTrans;
+    public GameObject panel;
+
     void Start()
     {
         Time.timeScale = 1;
@@ -39,6 +42,7 @@ public class Story : MonoBehaviour
                 if (index == dialog.Count - 1)
                 {
                     StopCoroutine(Type());
+                    StartCoroutine(LoadScene());
                     SceneManager.LoadScene(sceneName);
                 }
                 else
@@ -89,5 +93,12 @@ public class Story : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
         pressSpace.SetActive(true);
+    }
+
+    IEnumerator LoadScene()
+    {
+        panel.SetActive(true);
+        sceneTrans.SetTrigger("end");
+        yield return new WaitForSeconds(1.0f);
     }
 }

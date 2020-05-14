@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 
 public class Player : MonoBehaviour
@@ -20,12 +21,29 @@ public class Player : MonoBehaviour
 
     public GameObject effect;
 
+    public GameObject effectDeath;
+
+    public GameObject GameOverBox;
+
+    public AudioClip death;
+
+    static AudioSource audioSrc;
+
+    private void Start()
+    {
+        audioSrc = GetComponent<AudioSource>();
+    }
+
     private void Update() 
     {
         healthDisplay.text = health.ToString();
         if (health <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            audioSrc.PlayOneShot(death);
+            Instantiate(effectDeath, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            Time.timeScale = 0;
+            GameOverBox.SetActive(true);
         }
 
         //updating the position by using Vector2 and its method MoveTowards
